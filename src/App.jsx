@@ -5,9 +5,10 @@ import ComplaintTable from "./components/ComplaintTable";
 import DashboardStats from "./components/DashboardStats";
 import { exportToExcel } from "./utils/exportExcel";
 import { Button } from "antd";
-import {Download} from "lucide-react";
+import { Download } from "lucide-react";
+import moment from "moment";
 
-function App() {
+const App = () => {
 
   const [form] = Form.useForm();
 
@@ -63,7 +64,12 @@ function App() {
 
   const handleEdit = (record) => {
     setEditing(record);
-    form.setFieldsValue(record);
+
+    form.setFieldsValue({
+      ...record,
+      date: record.date ? moment(record.date) : null,
+      time: record.time ? moment(record.time) : null
+    });
   };
 
   const filtered = complaints.filter(c =>
@@ -72,36 +78,18 @@ function App() {
 
   return (
 
-    <div className="min-h-screen p-5 bg-gray-700">
+    <div className="min-h-screen p-5 bg-gray-100">
       <div className="w-10/12 mx-auto ">
-       <h1 className="text-3xl font-bold text-white mb-5 mt-2">Complaint Management System</h1>
+        <h1 className="text-2xl !sm:text-xs font-bold mb-5 mt-2">Complaint Management System</h1>
 
-      <DashboardStats complaints={complaints}/>
-
-      <Row gutter={20}>
-
-        <Col xs={24} md={8}>
-
-          <Card title={<span className="!text-white font-bold">Complaint Form</span>} 
-          className="!bg-gray-800 !border border-none">
-
-            <ComplaintForm
-              form={form}
-              onSubmit={handleSubmit}
-              editing={editing}
-            />
-
-          </Card>
-
-        </Col>
-
-        <Col xs={24} md={16}>
+        <DashboardStats complaints={complaints} />
+        <Col xs={24} md={24} className="mt-5">
 
           <Card
-            title={<span className="!text-white font-bold">Complaint Records</span>} className="!bg-gray-800 !border border-none"
+            title={<span className="font-semibold text-green-700">Complaint Records</span>} className="!border border-none"
             extra={
               <Button onClick={() => exportToExcel(complaints)}>
-                <Download size={18}/>Export Excel
+                <Download size={18} />Export Excel
               </Button>
             }
           >
@@ -121,11 +109,27 @@ function App() {
           </Card>
 
         </Col>
+        <Col xs={24} md={24} className="mt-5">
 
-      </Row>
+          <Card title={<span className="font-semibold text-blue-600">Complaint Form</span>}
+            className="!border border-none">
 
+            <ComplaintForm
+              form={form}
+              onSubmit={handleSubmit}
+              editing={editing}
+            />
+
+          </Card>
+
+        </Col>
+
+
+
+
+
+      </div>
     </div>
- </div>
   );
 
 }

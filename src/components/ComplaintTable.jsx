@@ -1,4 +1,4 @@
-import { Table, Button, Space, Tag } from "antd";
+import { Table, Button, Space, Tag, Tooltip } from "antd";
 import { Trash2, UserPen, MessageCircle } from "lucide-react";
 import moment from "moment";
 
@@ -73,30 +73,36 @@ Status: ${record.status}
 
                 <Space>
 
-                    <Button
-                        type="text"
-                        onClick={() => sendWhatsApp(record)}
-                        className="!text-green-500 hover:!text-green-600 !p-1"
-                    >
-                        <MessageCircle size={16} label="Whatsapps" />
-                    </Button>
+                    <Tooltip title="Send WhatsApp">
+                        <Button
+                            type="text"
+                            onClick={() => sendWhatsApp(record)}
+                            className="!text-green-500 hover:!text-green-600 !p-1"
+                        >
+                            <MessageCircle size={16} />
+                        </Button>
+                    </Tooltip>
 
-                    <Button
-                        type="text"
-                        onClick={() => onEdit(record)}
-                        className="hover:!text-blue-500 !p-1"
-                    >
-                        <UserPen size={16} />
-                    </Button>
+                    <Tooltip title="Edit Complaint">
+                        <Button
+                            type="text"
+                            onClick={() => onEdit(record)}
+                            className="hover:!text-blue-500 !p-1"
+                        >
+                            <UserPen size={16} />
+                        </Button>
+                    </Tooltip>
 
-                    <Button
-                        danger
-                        type="text"
-                        onClick={() => onDelete(record.key)}
-                        className="!p-1"
-                    >
-                        <Trash2 size={16} />
-                    </Button>
+                    <Tooltip title="Delete Complaint">
+                        <Button
+                            danger
+                            type="text"
+                            onClick={() => onDelete(record.key)}
+                            className="!p-1"
+                        >
+                            <Trash2 size={16} />
+                        </Button>
+                    </Tooltip>
 
                 </Space>
 
@@ -115,7 +121,7 @@ Status: ${record.status}
                 rowKey="key"
                 pagination={{ pageSize: 5 }}
                 scroll={{ x: "max-content" }}
-                className="min-w-[700px] !bg-gray-800 !text-white rounded-xl !text-sm"
+                className="min-w-[700px] rounded-xl !text-sm"
             />
 
         </div>

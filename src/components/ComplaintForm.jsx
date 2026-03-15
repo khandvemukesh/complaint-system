@@ -16,11 +16,11 @@ const ComplaintForm = ({ onSubmit, form, editing }) => {
             }}
         >
 
-            <div className="grid grid-cols-1 md:grid-cols-1 !text-white font-bold">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 
                 <Form.Item
                     name="name"
-                    label={<span className="!text-white font-semibold">Customer Name</span>}
+                    label={<span className="font-semibold">Customer Name</span>}
                     rules={[{ required: true }]}
                     
                 >
@@ -29,7 +29,7 @@ const ComplaintForm = ({ onSubmit, form, editing }) => {
 
                 <Form.Item
                     name="phone"
-                    label={<span className="!text-white font-semibold">Customer Phone</span>}
+                    label={<span className="font-semibold">Customer Phone</span>}
                     rules={[{ required: true }]}
                 >
                     <Input placeholder="Enter phone number" />
@@ -37,27 +37,27 @@ const ComplaintForm = ({ onSubmit, form, editing }) => {
 
                 <Form.Item
                     name="date"
-                    label={<span className="!text-white font-semibold">Date</span>}     
+                    label={<span className="font-semibold">Date</span>}     
                     rules={[{ required: true }]}
                 >
                     <DatePicker className="w-full" />
                 </Form.Item>
 
+                
+
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <Form.Item
                     name="time"
-                    label={<span className="!text-white font-semibold">Time</span>}
+                    label={<span className="font-semibold">Time</span>}
                     rules={[{ required: true }]}
                 >
                     <TimePicker className="w-full" />
                 </Form.Item>
-
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-1">
-
                 <Form.Item
                     name="technician"
-                    label={<span className="!text-white font-semibold">Technician Mobile</span>}
+                    label={<span className="font-semibold">Technician Mobile</span>}
                     rules={[{ required: true }]}
                 >
                     <Input placeholder="Technician WhatsApp number" />
@@ -65,7 +65,7 @@ const ComplaintForm = ({ onSubmit, form, editing }) => {
 
                 <Form.Item
                     name="status"
-                    label={<span className="!text-white font-semibold">Status</span>}
+                    label={<span className="font-semibold">Status</span>}
                 >
                     <Select
                         options={[
@@ -76,10 +76,10 @@ const ComplaintForm = ({ onSubmit, form, editing }) => {
                 </Form.Item>
 
             </div>
-
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Form.Item
                 name="complaint"
-                label={<span className="!text-white font-semibold">Complaint</span>}
+                label={<span className="font-semibold">Complaint</span>}
                 rules={[{ required: true }]}
             >
                 <Input.TextArea rows={3} placeholder="Complaint details" />
@@ -87,15 +87,15 @@ const ComplaintForm = ({ onSubmit, form, editing }) => {
 
             <Form.Item
                 name="address"
-                label={<span className="!text-white font-semibold">Address</span>}
+                label={<span className="font-semibold">Address</span>}
             >
-                <Input.TextArea rows={2} placeholder="Customer address" />
+                <Input.TextArea rows={3} placeholder="Customer address" />
             </Form.Item>
-
+            </div>
             <Button
                 type="primary"
                 htmlType="submit"
-                className="w-full mt-2 !bg-gray-600 hover:bg-gray-900"
+                className="w-fit mt-2 !bg-blue-600 hover:bg-blue-800"
             >
                 {editing ? "Update Complaint" : "Add Complaint"}
             </Button>

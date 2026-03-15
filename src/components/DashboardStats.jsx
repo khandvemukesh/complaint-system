@@ -10,18 +10,18 @@ const DashboardStats = ({ complaints }) => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
 
-            <Card className="rounded-xl !bg-gray-800 border !border-none">
-                <p className="text-white font-bold text-sm">Total Complaints</p>
+            <Card className="rounded-xl border !border-none">
+                <p className="text-gray-600 font-semibold text-sm">Total Complaints</p>
                 <h2 className="text-2xl font-bold text-blue-600">{total}</h2>
             </Card>
 
-            <Card className="rounded-xl !bg-gray-800 border !border-none">
-                <p className="text-white font-bold text-sm">Pending</p>
+            <Card className="rounded-xl  border !border-none">
+                <p className="text-gray-600 font-semibold text-sm">Pending</p>
                 <h2 className="text-2xl font-bold text-orange-500">{pending}</h2>
             </Card>
 
-            <Card className="rounded-xl !bg-gray-800 border !border-none">
-                <p className="text-white font-bold   text-sm">Completed</p>
+            <Card className="rounded-xl  border !border-none">
+                <p className="text-gray-600 font-semibold text-sm">Completed</p>
                 <h2 className="text-2xl font-bold text-green-600">{done}</h2>
             </Card>
 
